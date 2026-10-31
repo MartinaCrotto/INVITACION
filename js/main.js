@@ -86,3 +86,63 @@
     setInterval(actualizar, 1000);
   });
 })();
+
+
+/* ---------- Datos bancarios (overlay) ---------- */
+(() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('overlay-banco');
+    const abrirBtn = document.querySelector('[data-abrir-banco]');
+    if (!overlay || !abrirBtn) return;
+
+    const html = document.documentElement;
+    let focoPrevio = null;
+
+    const abrir = () => {
+      focoPrevio = document.activeElement;
+      overlay.hidden = false;
+      html.classList.add('con-overlay');
+      overlay.querySelector('.banco__cerrar').focus();
+    };
+    const cerrar = () => {
+      overlay.hidden = true;
+      html.classList.remove('con-overlay');
+      if (focoPrevio && focoPrevio.focus) focoPrevio.focus();
+    };
+
+    abrirBtn.addEventListener('click', abrir);
+    overlay.querySelector('.banco__cerrar').addEventListener('click', cerrar);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) cerrar(); }); // clic afuera
+
+    document.addEventListener('keydown', (e) => {
+      if (overlay.hidden) return;
+      if (e.key === 'Escape') cerrar();
+      if (e.key === 'Tab') {                    // el foco no se escapa del cuadro
+        const f = [...overlay.querySelectorAll('button')];
+        const primero = f[0], ultimo = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      }
+    });
+
+    /* Copiar alias / CBU */
+    async function copiar(texto) {
+      try { await navigator.clipboard.writeText(texto); }
+      catch (_) {
+        const t = document.createElement('textarea');
+        t.value = texto; t.style.cssText = 'position:fixed;opacity:0';
+        document.body.append(t); t.select();
+        try { document.execCommand('copy'); } catch (__) {}
+        t.remove();
+      }
+    }
+    overlay.querySelectorAll('[data-copiar]').forEach((b) => {
+      const original = b.textContent;
+      b.addEventListener('click', async () => {
+        await copiar(b.dataset.copiar);
+        b.textContent = '¡copiado!';
+        setTimeout(() => { b.textContent = original; }, 1500);
+      });
+    });
+  });
+})();

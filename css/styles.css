@@ -207,3 +207,70 @@ h1, h2, p { margin: 0; font-weight: 400; }
   gap: clamp(.5rem, 1.067vw, 11.5px);    /* 11,5 px entre botones */
   margin-top: clamp(1rem, 2.517vw, 27.2px);
 }
+
+/* ---------- OVERLAY DATOS BANCARIOS (caja de 941 × 428) ---------- */
+.con-overlay, .con-overlay body { overflow: hidden; }
+
+.overlay {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid; place-items: center;
+  padding: 1rem; overflow: auto;
+  background: var(--verde-70);                 /* velo verde translúcido sobre la página */
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  animation: aparece .25s ease;
+}
+.overlay[hidden] { display: none; }
+
+.banco {
+  position: relative; margin: auto;
+  width: min(87.1vw, 941px);
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: clamp(2.8rem, 7.617vw, 82.27px) clamp(1.25rem, 4.568vw, 49.33px) clamp(1.25rem, 2.24vw, 24.2px);
+  background: var(--crema); color: var(--verde);
+  border: 2px solid var(--verde);
+  animation: sube .3s ease;
+}
+.banco__titulo {                               /* 40 px */
+  font-family: var(--f-titulo); font-size: var(--fs-titulo);
+  line-height: 1; text-transform: uppercase;
+}
+.banco__titular { margin-top: clamp(1.25rem, 3.006vw, 32.47px); }   /* 32 px */
+.banco__cuentas {
+  display: grid; grid-template-columns: 1fr 1fr; width: 100%;
+  column-gap: clamp(1rem, 4.402vw, 47.54px);
+  margin-top: clamp(1.25rem, 3.261vw, 35.22px);
+}
+.cuenta-banco { display: flex; flex-direction: column; align-items: center; }
+.cuenta-banco p { overflow-wrap: anywhere; }
+.cuenta-banco__tipo { font-weight: 600; }      /* SemiBold */
+
+/* Botones "copiar": van dentro del espacio de abajo para no cambiar el tamaño de la caja */
+.cuenta-banco__copiar {
+  display: flex; gap: 1.2em; margin-top: 14px;
+  font-size: var(--fs-chico); line-height: 1;
+}
+.copiar {
+  padding: 0; background: none; border: 0;
+  font: inherit; color: inherit; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px;
+  transition: opacity .2s ease;
+}
+@media (hover: hover) { .copiar:hover, .banco__cerrar:hover { opacity: .7; } }
+
+.banco__cerrar {
+  position: absolute; top: .4rem; right: .8rem; padding: .2rem .5rem;
+  background: none; border: 0; color: var(--verde);
+  font: 400 2.2rem / 1 var(--f-texto); cursor: pointer; transition: opacity .2s ease;
+}
+
+/* En celular las dos cuentas van una debajo de la otra */
+@media (max-width: 640px) {
+  .banco__cuentas { grid-template-columns: 1fr; row-gap: 1.75rem; }
+}
+
+/* ---------- ANIMACIONES ---------- */
+@keyframes aparece { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sube { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

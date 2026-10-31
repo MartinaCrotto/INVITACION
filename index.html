@@ -8,7 +8,7 @@
   <!-- Tipografías: Aboreto y Cormorant Infant -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant+Infant:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant+Infant:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/main.js"></script>
@@ -60,7 +60,7 @@
     <!-- Regalos -->
     <section class="seccion seccion--verde regalos" id="regalos">
       <h2 class="regalos__titulo">Regalos</h2>
-      <p class="texto regalos__texto">Si querés hacernos un regalo te dejamos la información acá.</p>
+      <p class="texto regalos__texto">Si querés hacernos un regalo te dejamos la información acá</p>
       <div class="regalos__botones">
         <button type="button" class="btn btn--ancho btn--crema" data-abrir-banco>Datos bancarios</button>
         <a class="btn btn--ancho btn--borde-crema" href="#lista-regalos">Lista de regalos</a>
@@ -68,6 +68,38 @@
     </section>
 
   </main>
+
+  <!-- Overlay: datos bancarios -->
+  <div class="overlay" id="overlay-banco" hidden>
+    <div class="banco" role="dialog" aria-modal="true" aria-labelledby="banco-titulo">
+      <button type="button" class="banco__cerrar" aria-label="Cerrar">&times;</button>
+
+      <h2 class="banco__titulo" id="banco-titulo">Datos bancarios</h2>
+      <p class="banco__titular">Titular: Felicitas Abraham<br>Banco Galicia</p>
+
+      <div class="banco__cuentas">
+        <div class="cuenta-banco">
+          <p class="cuenta-banco__tipo">Caja de ahorro en Pesos</p>
+          <p>Alias: alias.acá</p>
+          <p>CBU: 0113465789001213128997</p>
+          <div class="cuenta-banco__copiar">
+            <button type="button" class="copiar" data-copiar="alias.acá">copiar alias</button>
+            <button type="button" class="copiar" data-copiar="0113465789001213128997">copiar CBU</button>
+          </div>
+        </div>
+
+        <div class="cuenta-banco">
+          <p class="cuenta-banco__tipo">Caja de ahorro en Dólares</p>
+          <p>Alias: alias.acá.dolares</p>
+          <p>CBU: 0113465789001213128997</p>
+          <div class="cuenta-banco__copiar">
+            <button type="button" class="copiar" data-copiar="alias.acá.dolares">copiar alias</button>
+            <button type="button" class="copiar" data-copiar="0113465789001213128997">copiar CBU</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 
