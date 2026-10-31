@@ -142,7 +142,7 @@ h1, h2, p { margin: 0; font-weight: 400; }
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: var(--textura) center / cover;
   mix-blend-mode: multiply;
-  opacity: .105;               /* imagen 15% × capa 70% */
+  opacity: .300;            
   pointer-events: none;
 }
 
