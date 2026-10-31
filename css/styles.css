@@ -71,8 +71,13 @@ h1, h2, p { margin: 0; font-weight: 400; }
 .hero {
   position: relative;
   height: 100svh;
-  background: var(--crema);
   color: var(--verde);
+}
+
+/* Pantalla principal + espacio extra debajo del marco */
+.inicio {
+  background: var(--crema);
+  padding-bottom: clamp(2rem, 11.1vw, 120px);   /* ← este es el "aire": subilo o bajalo a gusto */
 }
 
 /* Marco: 39,7 px del borde en el Figma */
@@ -178,3 +183,27 @@ h1, h2, p { margin: 0; font-weight: 400; }
 .caja__hora  { margin-top: clamp(.75rem, 3.82vw, 41.29px); font-size: var(--fs-hora); line-height: 1; }
 .caja__lugar { margin-top: clamp(0px, .515vw, 5.56px); max-width: 7.5em; text-wrap: balance; }
 .caja .btn   { margin-top: clamp(1.5rem, 13.34vw, 144px); }
+
+
+/* ---------- BOTONES: variantes nuevas ---------- */
+.btn--ancho       { min-width: clamp(11rem, 24.1vw, 260.2px); }    /* 260 px */
+.btn--crema       { background: var(--crema); color: var(--verde); border-color: var(--crema); }
+.btn--borde-crema { background: transparent;  color: var(--crema); border-color: var(--crema); }
+
+/* ---------- REGALOS (frame "5": 1080 × 494) ---------- */
+.regalos {
+  padding: clamp(3rem, 10.89vw, 117.62px) 1rem clamp(2.5rem, 8.425vw, 91px);
+}
+.regalos__titulo {                       /* REGALOS: 40 px */
+  font-family: var(--f-titulo); font-size: var(--fs-titulo);
+  line-height: 1; text-transform: uppercase;
+}
+.regalos__texto {
+  max-width: 13.25em;                    /* corta en "…regalo te / dejamos…" */
+  margin-top: clamp(1rem, 2.685vw, 29px);
+}
+.regalos__botones {
+  display: flex; flex-direction: column; align-items: center;
+  gap: clamp(.5rem, 1.067vw, 11.5px);    /* 11,5 px entre botones */
+  margin-top: clamp(1rem, 2.517vw, 27.2px);
+}

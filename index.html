@@ -23,17 +23,18 @@
   </section>
 
   <main>
-
-    <!-- Pantalla principal -->
-    <header class="hero con-textura">
-      <p class="hero__nos">Nos casamos</p>
-      <h1 class="hero__nombres">
-        <span class="nombre nombre--novia">Felicitas</span>
-        <span class="amp" aria-hidden="true">&amp;</span>
-        <span class="nombre nombre--novio">Bautista</span>
-      </h1>
-      <p class="hero__fecha">07 | 02 | 27</p>
-    </header>
+          <!-- Pantalla principal + aire con textura debajo del marco -->
+    <div class="inicio con-textura">
+      <header class="hero">
+        <p class="hero__nos">Nos casamos</p>
+        <h1 class="hero__nombres">
+          <span class="nombre nombre--novia">Felicitas</span>
+          <span class="amp" aria-hidden="true">&amp;</span>
+          <span class="nombre nombre--novio">Bautista</span>
+        </h1>
+        <p class="hero__fecha">07 | 02 | 27</p>
+      </header>
+    </div>
 
     <!-- Cuenta regresiva: la fecha se cambia en data-fecha -->
     <section class="seccion seccion--verde cuenta" data-fecha="2027-02-07T19:00:00-03:00" aria-label="Cuenta regresiva">
@@ -53,6 +54,16 @@
         <p class="caja__hora">19.00 hs</p>
         <p class="texto caja__lugar">Trenque Lauquen Polo Club</p>
         <a class="btn btn--verde" href="https://www.google.com/maps/search/?api=1&query=Trenque+Lauquen+Polo+Club" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </section>
+
+    <!-- Regalos -->
+    <section class="seccion seccion--verde regalos" id="regalos">
+      <h2 class="regalos__titulo">Regalos</h2>
+      <p class="texto regalos__texto">Si querés hacernos un regalo te dejamos la información acá.</p>
+      <div class="regalos__botones">
+        <button type="button" class="btn btn--ancho btn--crema" data-abrir-banco>Datos bancarios</button>
+        <a class="btn btn--ancho btn--borde-crema" href="#lista-regalos">Lista de regalos</a>
       </div>
     </section>
 
