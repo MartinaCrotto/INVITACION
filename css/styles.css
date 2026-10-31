@@ -16,6 +16,11 @@
   --fs-texto:     clamp(1.15rem, 2.96vw, 2rem);     /* 32 px  */
   --fs-boton:     clamp(1.05rem, 2.3vw, 1.5625rem); /* 25 px  */
   --fs-chico:     clamp(.95rem, 1.85vw, 1.25rem);   /* 20 px  */
+
+    --fs-hora: clamp(2.6rem, 6.5vw, 4.375rem);  /* 70 px */
+
+  /* Textura de papel*/
+  --textura: url("../assets/textura.png");
 }
 
 /* ---------- BASE ---------- */
@@ -64,7 +69,7 @@ h1, h2, p { margin: 0; font-weight: 400; }
 
 /* Pantalla principal (frame "2" del Figma) */
 .hero {
-  position: sticky; top: 0; z-index: 1;    /* queda fija debajo de la solapa */
+  position: relative;
   height: 100svh;
   background: var(--crema);
   color: var(--verde);
@@ -124,3 +129,52 @@ h1, h2, p { margin: 0; font-weight: 400; }
 .cuenta__item { display: flex; flex-direction: column; align-items: center; }
 .cuenta__num   { font-size: var(--fs-titulo); }                         /* 40 px */
 .cuenta__label { font-size: var(--fs-chico); margin-top: clamp(2px, .42vw, 4.5px); } /* 20 px */
+
+/* ---------- TEXTURA (solo en Principal y Ceremonia) ---------- */
+.con-textura { position: relative; isolation: isolate; }
+.con-textura::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--textura) center / cover;
+  mix-blend-mode: multiply;
+  opacity: .105;               /* imagen 15% × capa 70% */
+  pointer-events: none;
+}
+
+/* ---------- BOTONES ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: clamp(2.75rem, 4.876vw, 52.655px);
+  min-width: clamp(9.5rem, 18.14vw, 196px);      /* "Cómo llegar": 196 px */
+  padding: 0 1.5em;
+  border: 2px solid var(--verde);
+  border-radius: 64.286px;
+  font: 400 var(--fs-boton) / 1 var(--f-texto);
+  text-decoration: none; cursor: pointer;
+  transition: opacity .2s ease;
+}
+.btn--verde { background: var(--verde); color: var(--crema); }
+@media (hover: hover) { .btn:hover { opacity: .7; } }   /* hover: 70% */
+.btn:active { opacity: .7; }
+
+/* ---------- SECCIÓN CREMA ---------- */
+.seccion--crema { background: var(--crema); color: var(--verde); }
+
+/* ---------- CEREMONIA & FIESTA (frame "4": 1080 × 1130) ---------- */
+.ceremonia {
+  padding: clamp(2.5rem, 16.39vw, 177px) 1rem;
+}
+.caja {                                  /* caja 721 × 776 */
+  display: flex; flex-direction: column; align-items: center;
+  width: min(max(66.8vw, 20rem), 721.4px);
+  padding: clamp(2rem, 9.035vw, 97.58px) 1rem clamp(2rem, 7.985vw, 86.24px);
+  background: var(--crema);
+  border: 2px solid var(--verde);
+}
+.caja__titulo {
+  font-family: var(--f-titulo); font-size: var(--fs-titulo);
+  line-height: 1; text-transform: uppercase;
+}
+.caja__fecha { margin-top: clamp(1.5rem, 12.07vw, 130.34px); }
+.caja__hora  { margin-top: clamp(.75rem, 3.82vw, 41.29px); font-size: var(--fs-hora); line-height: 1; }
+.caja__lugar { margin-top: clamp(0px, .515vw, 5.56px); max-width: 7.5em; text-wrap: balance; }
+.caja .btn   { margin-top: clamp(1.5rem, 13.34vw, 144px); }
