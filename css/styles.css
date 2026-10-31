@@ -226,7 +226,7 @@ h1, h2, p { margin: 0; font-weight: 400; }
   position: relative; margin: auto;
   width: min(87.1vw, 941px);
   display: flex; flex-direction: column; align-items: center; text-align: center;
-  padding: clamp(2.8rem, 7.617vw, 82.27px) clamp(1.25rem, 4.568vw, 49.33px) clamp(1.25rem, 2.24vw, 24.2px);
+  padding: clamp(2.8rem, 6.5vw, 70px) clamp(1.25rem, 4.568vw, 49.33px);
   background: var(--crema); color: var(--verde);
   border: 2px solid var(--verde);
   animation: sube .3s ease;
@@ -290,7 +290,14 @@ h1, h2, p { margin: 0; font-weight: 400; }
   padding: clamp(1.5rem, 3.7vw, 2.5rem) clamp(1rem, 3.68vw, 40px) clamp(3.5rem, 8.4vw, 5.7rem);
   animation: aparece .4s ease;
 }
-.lista__volver { align-self: flex-start; min-width: 0; padding: 0 1.5em; }
+.lista__volver {                               /* círculo con la flecha */
+  align-self: flex-start;
+  width: clamp(2.75rem, 4.876vw, 52.655px);    /* mismo alto que los demás botones */
+  min-width: 0; padding: 0;
+  border-color: transparent;
+}
+.lista__volver svg { width: 1.1em; height: 1.1em; margin: 0; }
+
 .lista__titulo {
   margin-top: clamp(1rem, 3.7vw, 2.5rem);
   font-family: var(--f-titulo); font-size: var(--fs-titulo);
