@@ -146,3 +146,59 @@
     });
   });
 })();
+
+/* ---------- Lista de regalos (pantalla aparte: #lista-regalos) ---------- */
+(() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const vista = document.getElementById('vista-regalos');
+    const principal = document.querySelector('main');
+    const grid = document.getElementById('regalos-grid');
+    if (!vista || !principal || !grid) return;
+
+    /* Armar las tarjetas desde js/regalos.js */
+    const el = (tag, clase, texto) => {
+      const n = document.createElement(tag);
+      if (clase) n.className = clase;
+      if (texto != null) n.textContent = texto;
+      return n;
+    };
+    (typeof REGALOS !== 'undefined' ? REGALOS : []).forEach((g) => {
+      const tarjeta = el(g.url ? 'a' : 'div', 'regalo');
+      if (g.url) { tarjeta.href = g.url; tarjeta.target = '_blank'; tarjeta.rel = 'noopener'; }
+
+      const foto = el('div', 'regalo__foto');
+      if (g.imagen) {
+        const img = el('img');
+        img.src = g.imagen; img.alt = g.nombre; img.loading = 'lazy';
+        foto.append(img);
+      }
+      const info = el('div', 'regalo__info');
+      info.append(el('p', 'regalo__nombre', g.nombre), el('p', 'regalo__precio', g.precio));
+      tarjeta.append(foto, info);
+      grid.append(tarjeta);
+    });
+
+    /* Cambiar entre la invitación y la lista, recordando dónde estabas */
+    let scrollGuardado = null;
+    const irA = (y = 0) => window.scrollTo({ top: y, behavior: 'instant' });
+
+    function ruta() {
+      const enLista = location.hash === '#lista-regalos';
+      if (enLista && vista.hidden) {
+        scrollGuardado = window.scrollY;
+        principal.hidden = true; vista.hidden = false;
+        irA(0);
+      } else if (!enLista && !vista.hidden) {
+        vista.hidden = true; principal.hidden = false;
+        if (scrollGuardado !== null) irA(scrollGuardado);
+        else document.getElementById('regalos')?.scrollIntoView({ behavior: 'instant' });
+      }
+    }
+
+    document.querySelector('[data-volver]').addEventListener('click', () => {
+      if (scrollGuardado !== null) history.back(); else location.hash = '';
+    });
+    window.addEventListener('hashchange', ruta);
+    ruta();
+  });
+})();

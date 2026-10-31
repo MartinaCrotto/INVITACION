@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant+Infant:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/regalos.js"></script>
   <script src="js/main.js"></script>
 </head>
 <body>
@@ -68,6 +69,17 @@
     </section>
 
   </main>
+
+  <!-- Pantalla: lista de regalos (#lista-regalos) -->
+  <section class="seccion seccion--verde lista" id="vista-regalos" hidden aria-label="Lista de regalos">
+    <button type="button" class="btn btn--borde-crema lista__volver" data-volver>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg>
+      Volver
+    </button>
+    <h2 class="lista__titulo">Lista de regalos</h2>
+    <p class="texto lista__texto">Algunas ideas, con precios de referencia.</p>
+    <div class="lista__grid" id="regalos-grid"></div>
+  </section>
 
   <!-- Overlay: datos bancarios -->
   <div class="overlay" id="overlay-banco" hidden>

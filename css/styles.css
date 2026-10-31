@@ -18,6 +18,7 @@
   --fs-chico:     clamp(.95rem, 1.85vw, 1.25rem);   /* 20 px  */
 
     --fs-hora: clamp(2.6rem, 6.5vw, 4.375rem);  /* 70 px */
+    --fs-cuenta: clamp(1rem, 2.4vw, 1.625rem);  /* 26 px */
 
   /* Textura de papel*/
   --textura: url("../assets/textura.png");
@@ -241,7 +242,8 @@ h1, h2, p { margin: 0; font-weight: 400; }
   margin-top: clamp(1.25rem, 3.261vw, 35.22px);
 }
 .cuenta-banco { display: flex; flex-direction: column; align-items: center; }
-.cuenta-banco p { overflow-wrap: anywhere; }
+.banco__titular, .cuenta-banco { font-size: var(--fs-cuenta); }
+.cuenta-banco p { white-space: nowrap; }       /* cada dato en una sola línea */
 .cuenta-banco__tipo { font-weight: 600; }      /* SemiBold */
 
 /* Botones "copiar": van dentro del espacio de abajo para no cambiar el tamaño de la caja */
@@ -274,3 +276,39 @@ h1, h2, p { margin: 0; font-weight: 400; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- BASE: elementos ocultos ---------- */
+[hidden] { display: none !important; }
+
+/* ---------- LISTA DE REGALOS ---------- */
+.btn svg {
+  width: .9em; height: .9em; margin-right: .5em;
+  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+}
+.lista {
+  min-height: 100svh;
+  padding: clamp(1.5rem, 3.7vw, 2.5rem) clamp(1rem, 3.68vw, 40px) clamp(3.5rem, 8.4vw, 5.7rem);
+  animation: aparece .4s ease;
+}
+.lista__volver { align-self: flex-start; min-width: 0; padding: 0 1.5em; }
+.lista__titulo {
+  margin-top: clamp(1rem, 3.7vw, 2.5rem);
+  font-family: var(--f-titulo); font-size: var(--fs-titulo);
+  line-height: 1; text-transform: uppercase;
+}
+.lista__texto { margin-top: clamp(.75rem, 2.2vw, 1.5rem); }
+.lista__grid {
+  display: grid; width: min(100%, 56rem);
+  grid-template-columns: repeat(auto-fill, minmax(clamp(9.5rem, 22vw, 15rem), 1fr));
+  gap: clamp(.75rem, 2.2vw, 1.6rem);
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* Tarjeta de regalo */
+.regalo { display: flex; flex-direction: column; background: var(--crema); color: var(--verde); text-decoration: none; }
+.regalo__foto { aspect-ratio: 4 / 5; background: rgba(115, 132, 100, .12); overflow: hidden; }
+.regalo__foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.regalo__info { display: grid; gap: .5rem; justify-items: center; padding: 1rem .75rem 1.25rem; text-align: center; }
+.regalo__nombre { font-size: var(--fs-boton); line-height: 1.15; }
+.regalo__precio { font-family: var(--f-titulo); font-size: var(--fs-chico); line-height: 1; }
+@media (hover: hover) { a.regalo { transition: opacity .2s ease; } a.regalo:hover { opacity: .7; } }
