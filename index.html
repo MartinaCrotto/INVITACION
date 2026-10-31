@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Felicitas & Bautista · 07.02.27</title>
+
+  <!-- Tipografías: Aboreto y Cormorant Infant -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant+Infant:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js"></script>
+</head>
+<body>
+
+ <body>
+
+  <!-- Solapa verde: se levanta al hacer scroll -->
+  <section class="portada" aria-label="Portada">
+    <img class="isologo" src="assets/isologo-bf.png" alt="Isologo de Feli y Bauti" onerror="this.remove()">
+  </section>
+
+  <main>
+
+    <!-- Pantalla principal -->
+    <header class="hero">
+      <p class="hero__nos">Nos casamos</p>
+      <h1 class="hero__nombres">
+        <span class="nombre nombre--novia">Felicitas</span>
+        <span class="amp" aria-hidden="true">&amp;</span>
+        <span class="nombre nombre--novio">Bautista</span>
+      </h1>
+      <p class="hero__fecha">07 | 02 | 27</p>
+    </header>
+
+    <!-- Cuenta regresiva: la fecha se cambia en data-fecha -->
+    <section class="seccion seccion--verde cuenta" data-fecha="2027-02-07T19:00:00-03:00" aria-label="Cuenta regresiva">
+      <h2 class="cuenta__titulo" id="cuenta-titulo">Faltan</h2>
+      <div class="cuenta__fila">
+        <div class="cuenta__item"><span class="cuenta__num" id="cd-dias">150</span><span class="cuenta__label" id="cd-dias-label">Días</span></div>
+        <div class="cuenta__item"><span class="cuenta__num" id="cd-horas">10</span><span class="cuenta__label" id="cd-horas-label">Horas</span></div>
+        <div class="cuenta__item"><span class="cuenta__num" id="cd-minutos">05</span><span class="cuenta__label" id="cd-minutos-label">Minutos</span></div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+</body>
+</html>
