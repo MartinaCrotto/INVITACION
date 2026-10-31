@@ -319,3 +319,47 @@ h1, h2, p { margin: 0; font-weight: 400; }
 .regalo__nombre { font-size: var(--fs-boton); line-height: 1.15; }
 .regalo__precio { font-family: var(--f-titulo); font-size: var(--fs-chico); line-height: 1; }
 @media (hover: hover) { a.regalo { transition: opacity .2s ease; } a.regalo:hover { opacity: .7; } }
+
+/* ---------- BOTONES: variantes nuevas ---------- */
+.btn--largo       { min-width: clamp(12rem, 26.58vw, 287.1px); }   /* 287 px */
+.btn--borde-verde { background: transparent; color: var(--verde); border-color: var(--verde); }
+
+/* ---------- CONFIRMACIÓN (frame "6": 1080 × 552) ---------- */
+.confirmar { padding: clamp(3rem, 12.448vw, 134.44px) 1rem clamp(3rem, 12.912vw, 139.45px); }
+.confirmar__titulo {
+  font-family: var(--f-titulo); font-size: var(--fs-titulo);
+  line-height: 1; text-transform: uppercase;
+  max-width: 8.5em;                                  /* parte el título en 2 renglones */
+}
+.confirmar__texto { margin-top: clamp(1rem, 3.526vw, 38.08px); }
+.confirmar .btn   { margin-top: clamp(1rem, 3.276vw, 35.38px); }
+
+/* ---------- INFO ÚTIL (frame "7": 1080 × 463) ---------- */
+.info { padding: clamp(3rem, 10.89vw, 117.62px) 1rem clamp(3rem, 11.442vw, 123.6px); }
+.info__titulo {
+  font-family: var(--f-titulo); font-size: var(--fs-titulo);
+  line-height: 1; text-transform: uppercase;
+}
+.info__texto { margin-top: clamp(1rem, 2.772vw, 29.94px); }
+.info .btn   { margin-top: clamp(1rem, 2.52vw, 27.21px); }
+
+/* ---------- CIERRE (frame "8": 1080 × 230) ---------- */
+.cierre { padding: clamp(2.5rem, 7.176vw, 77.5px) 1rem clamp(2.5rem, 6.657vw, 71.9px); }
+.cierre__gracias { font-size: var(--fs-boton); line-height: 1.16; }        /* 25 px */
+.cierre__marca {
+  margin-top: clamp(.5rem, 1.074vw, 11.6px);
+  font-family: var(--f-titulo); font-size: var(--fs-titulo);               /* 40 px */
+  line-height: 1; text-transform: uppercase;
+}
+.cierre__amp { font: 500 var(--fs-boton) / 1 var(--f-texto); margin-inline: .46em; }  /* "&" Medium 25 px */
+
+/* ---------- AVISO "Disponible pronto" ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); z-index: 300;
+  transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;
+  padding: .55em 1.6em; border-radius: 64.286px;
+  background: var(--verde); color: var(--crema); border: 2px solid var(--crema);
+  font-size: var(--fs-boton);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.toast.on { opacity: 1; transform: translate(-50%, 0); }

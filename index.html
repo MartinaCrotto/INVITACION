@@ -14,7 +14,7 @@
   <script src="js/regalos.js"></script>
   <script src="js/main.js"></script>
 </head>
-<body>
+
 
  <body>
 
@@ -68,6 +68,30 @@
       </div>
     </section>
 
+
+    <!-- Confirmación de asistencia -->
+    <section class="seccion seccion--crema confirmar" id="confirmar">
+      <h2 class="confirmar__titulo">Confirmación de asistencia</h2>
+      <p class="texto confirmar__texto">Esperamos que puedas ser<br>parte de esta celebración</p>
+      <!-- Cuando tengas el link del formulario: href="https://..." target="_blank" rel="noopener" (y borrá data-pronto) -->
+      <a class="btn btn--verde btn--largo" href="#" data-pronto>Confirmar asistencia</a>
+    </section>
+
+    <!-- Info útil -->
+    <section class="seccion seccion--crema info" id="info">
+      <h2 class="info__titulo">Info útil</h2>
+      <p class="texto info__texto">Si necesitas un lugar donde quedarte<br>te dejamos sugerencias de alojamientos</p>
+      <!-- Cuando tengas el link del documento: href="https://..." target="_blank" rel="noopener" (y borrá data-pronto) -->
+      <a class="btn btn--borde-verde btn--ancho" href="#" data-pronto>Ver hospedajes</a>
+    </section>
+
+    <!-- Cierre -->
+    <footer class="seccion seccion--verde cierre">
+      <p class="cierre__gracias">¡Gracias por acompañarnos!</p>
+      <p class="cierre__marca">Feli<span class="cierre__amp">&amp;</span>Bauti</p>
+    </footer>
+
+
   </main>
 
   <!-- Pantalla: lista de regalos (#lista-regalos) -->
@@ -75,13 +99,11 @@
     <button type="button" class="btn btn--borde-crema lista__volver" data-volver aria-label="Volver">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg>
     </button>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg>
-      Volver
-    </button>
     <h2 class="lista__titulo">Lista de regalos</h2>
     <p class="texto lista__texto">Algunas ideas, con precios de referencia.</p>
     <div class="lista__grid" id="regalos-grid"></div>
   </section>
+
 
   <!-- Overlay: datos bancarios -->
   <div class="overlay" id="overlay-banco" hidden>
@@ -115,7 +137,8 @@
     </div>
   </div>
 
-</body>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 </body>
+
 </html>

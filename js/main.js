@@ -202,3 +202,21 @@
     ruta();
   });
 })();
+
+
+/* ---------- Botones sin link todavía: aviso "Disponible pronto" ---------- */
+(() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+    let timer;
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('[data-pronto]')) return;
+      e.preventDefault();
+      toast.textContent = 'Disponible pronto';
+      toast.classList.add('on');
+      clearTimeout(timer);
+      timer = setTimeout(() => toast.classList.remove('on'), 2200);
+    });
+  });
+})();
